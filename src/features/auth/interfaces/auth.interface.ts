@@ -1,6 +1,5 @@
 import { Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
-
 import { IUserDocument } from '@user/interfaces/user.interface';
 
 declare global {
@@ -28,6 +27,8 @@ export interface IAuthDocument extends Document {
     password?: string;
     avatarColor: string;
     createdAt: Date;
+    passwordResetToken?: string;
+    passwordResetExpires?: number | string;
     comparePassword(password: string): Promise<boolean>;
     hashPassword(password: string): Promise<string>;
 }
